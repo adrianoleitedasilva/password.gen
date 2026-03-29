@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>password.gen</title>
+  <link rel="icon" type="image/svg+xml" href="favicon.svg" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@300;400;500;600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <main class="container">
+
+    <header class="header">
+      <h1 class="title">password<span class="accent">.</span>gen</h1>
+      <p class="subtitle">Gere senhas seguras em instantes</p>
+    </header>
+
+    <!-- Password output -->
+    <section class="output-section">
+      <div class="password-box" id="passwordBox">
+        <span class="password-text" id="passwordText">clique em gerar</span>
+        <button class="copy-btn" id="copyBtn" title="Copiar senha" aria-label="Copiar senha">
+          <svg id="copyIcon" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+            <rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect>
+            <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
+          </svg>
+          <svg id="checkIcon" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="hidden">
+            <polyline points="20 6 9 17 4 12"></polyline>
+          </svg>
+        </button>
+      </div>
+
+      <!-- Password strength indicator -->
+      <div class="strength-bar-wrapper">
+        <div class="strength-bar" id="strengthBar">
+          <div class="strength-fill" id="strengthFill"></div>
+        </div>
+        <span class="strength-label" id="strengthLabel"></span>
+      </div>
+    </section>
+
+    <!-- Controls -->
+    <section class="controls">
+
+      <!-- Length -->
+      <div class="control-group">
+        <div class="control-header">
+          <label class="control-label" for="lengthRange">Tamanho</label>
+          <span class="length-value" id="lengthValue">16</span>
+        </div>
+        <input
+          type="range"
+          id="lengthRange"
+          class="range-input"
+          min="4"
+          max="64"
+          value="16"
+          aria-label="Tamanho da senha"
+        />
+        <div class="range-markers">
+          <span>4</span>
+          <span>16</span>
+          <span>32</span>
+          <span>48</span>
+          <span>64</span>
+        </div>
+      </div>
+
+      <!-- Character types -->
+      <div class="control-group">
+        <label class="control-label">Caracteres</label>
+        <div class="options-grid">
+
+          <label class="option-item" for="optUppercase">
+            <input type="checkbox" id="optUppercase" class="option-checkbox" checked />
+            <span class="option-toggle"></span>
+            <span class="option-text">
+              <span class="option-name">Maiúsculas</span>
+              <span class="option-example">A–Z</span>
+            </span>
+          </label>
+
+          <label class="option-item" for="optLowercase">
+            <input type="checkbox" id="optLowercase" class="option-checkbox" checked />
+            <span class="option-toggle"></span>
+            <span class="option-text">
+              <span class="option-name">Minúsculas</span>
+              <span class="option-example">a–z</span>
+            </span>
+          </label>
+
+          <label class="option-item" for="optNumbers">
+            <input type="checkbox" id="optNumbers" class="option-checkbox" checked />
+            <span class="option-toggle"></span>
+            <span class="option-text">
+              <span class="option-name">Números</span>
+              <span class="option-example">0–9</span>
+            </span>
+          </label>
+
+          <label class="option-item" for="optSymbols">
+            <input type="checkbox" id="optSymbols" class="option-checkbox" />
+            <span class="option-toggle"></span>
+            <span class="option-text">
+              <span class="option-name">Símbolos</span>
+              <span class="option-example">!@#$</span>
+            </span>
+          </label>
+
+        </div>
+      </div>
+
+    </section>
+
+    <!-- Actions -->
+    <div class="actions">
+      <button class="btn-generate" id="generateBtn">Gerar</button>
+    </div>
+
+    <!-- Toast feedback -->
+    <div class="toast" id="toast" role="alert" aria-live="polite"></div>
+
+  </main>
+
+  <script src="script.js"></script>
+</body>
+</html>
